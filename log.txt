@@ -1,0 +1,12 @@
+URL: /
+Timestamp: Wed Mar 29 2023 12:08:19 GMT+0200 (Central European Summer Time)
+
+URL: /
+Timestamp: Wed Mar 29 2023 12:13:10 GMT+0200 (Central European Summer Time)
+
+URL: /styles.css
+Timestamp: Wed Mar 29 2023 12:13:10 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Wed Mar 29 2023 12:13:11 GMT+0200 (Central European Summer Time)
+
