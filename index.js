@@ -35,3 +35,10 @@ app.get("/documentation", (req, res) => {
     res.sendFile("public/documentation.html", { root: __dirname });
 });
  
+//error handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('An error ocurred..');
+});
+
+
