@@ -18,3 +18,20 @@ let topMovies = [
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}));
 
+//welcome message
+app.get("/", (req, res) => {
+    console.log("Welcome to myFlix");
+    res.send("Welcome to myFlix!");
+  });
+
+//have /movies URL call topMpovies
+app.get('/movies', (req, res) => {
+    res.json(topMovies);
+});
+
+//serve documentation.html from public folder
+app.use(express.static("public"));
+app.get("/documentation", (req, res) => {
+    res.sendFile("public/documentation.html", { root: __dirname });
+});
+ 
