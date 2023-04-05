@@ -4,9 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 
-//have expresss use common morgan setup
-app.use(morgan('common'));
-
 //top movie array for json
 let topMovies = [
     {
