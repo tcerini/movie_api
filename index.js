@@ -7,7 +7,34 @@ const app = express();
 //top movie array for json
 let topMovies = [
     {
-        title: 'There Will Be Blood'
+        Title: '1. There Will Be Blood'
+    },
+    {
+        Title: '2. Law Abiding Citizen'
+    },
+    {  
+        Title: '3. Star Wars: The Phantom Menace'
+    },
+    {
+        Title: '4. Lord of the Rings: Two Towers'
+    },
+    {
+        Title: '5. John Wick 4'
+    },
+    {    
+        Title: '6. Gangs of New York'
+    },
+    {
+        Title: '7. Catch Me if You Can'
+    },
+    {
+        Title: '8. 300'
+    },  
+    {    
+        Title: '9. Role Models'
+    },
+    {    
+        Title: '10.Lord of the Rings: Return of the King'
     }
 ];
 
