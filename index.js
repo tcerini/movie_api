@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
 const app = express();
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
 
 //top movie array for json
 let topMovies = [
