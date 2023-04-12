@@ -341,7 +341,7 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
   let user = users.find( user => user.id == id );
 
   if (user) {
-    user.favouriteMovies = user.favouriteMovies.filter( title => title !== movieTitle)
+    user.favouriteMovies = user.favouriteMovies.filter( title => title != movieTitle)
     res.status(200).send(`${movieTitle} has been removed from User ${id}'s array`)
   } else {
     res.status(400).send("Movie not deleted")
@@ -350,7 +350,7 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
 
 //DELETE user
 app.delete('/users/:id', (req, res) => {
-  const { id, movieTitle } = req.params;
+  const { id } = req.params;
  
   let user = users.find( user => user.id == id );
 
