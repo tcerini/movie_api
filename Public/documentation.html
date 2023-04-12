@@ -1,19 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>myFlix</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  </head>
 
 <body>
-    <h1>MyFlix Application - Documentation</h1>
-    <h2>Purpose:</h2>
-    <p>To build the server-side component of a “movies” web application. The web
+  <div>
+  <h1>MyFlix Movie API</h1>
+    <h2>Objective</h2>
+        <p>
+        To build the server-side component of a “movies” web application. The web
         application will provide users with access to information about different
         movies, directors, and genres. Users will be able to sign up, update their
         personal information, and create a list of their favorite movies.</p>
+
+    <h2>Features</h2>
+        <ul>
+            <li>Return a list of ALL movies to the user</li>
+            <li>Return data (description, genre, director, image URL, whether it's featured or not) about a single movie by title to the user</li>
+            <li>Return data about a genre (description) by name/title</li>
+            <li>Return data about a director (bio, birth year, death year) by name</li>
+            <li>Allow new users to register</li>
+            <li>Allow users to update their user info</li>
+            <li>Allow users to add a movie to their list of favorites</li>
+            <li>Allow users to remove a movie from their list of favorites</li>
+            <li>Allow existing users to deregister.</li>
+        </ul>
+    </div>
+
+    <h2>URL Endpoint Documentation</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Business Logic</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Query Parameters</th>
+            <th>Request Body Data Format</th>
+            <th>Response Body Data Format</th>
+        </tr>
+      </thead>
+
+     <tbody>   
+      <tr>
+          <td>Returns a list of Top Movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data for all Top Movies</td>
+      </tr>
+
+      <tr>
+          <td>Returns information about specific movie</td>
+          <td>/movies/:title</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about a specific movie</td>
+      </tr>
+
+      <tr>
+        <td>Returns information about a  specific director</td>
+        <td>/movies/directors/:directorName</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a specific director</td>
+      </tr>
+
+      <tr>
+        <td>Returns data about a genre by title</td>
+        <td>/movies/genre/:genreName</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a specific genre of movie</td>
+      </tr>
+
+      <tr>
+        <td>Creates user and unique ID  (requires name)</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>Name: []</td>
+        <td>JSON object with users name and unique ID</td>
+      </tr>
+
+      <tr>
+        <td>Update user information </td>
+        <td>/users/:id</td>
+        <td>PUT</td>
+        <td>Name: [updated]</td>
+        <td>JSON object (user) edited </td>
+      </tr>
+
+      <tr>
+        <td>Create top movies for specific user</td>
+        <td>/users/:id/:movieTitle</td>
+        <td>POST</td>
+        <td>None</td>
+        <td>Text response confirming movie was added correctly</tr>
+
+      
+      <tr>
+        <td>Allow user to delete top movies for specific user</td>
+        <td>/users/:id/:movieTitle</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>Text response confirming movie was deleted correctly</td>
+      </tr>
+
+      <tr>
+        <td>Allow user to deregister</td>
+        <td>/users/:id</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>Text response confirming user was deleted correctly</td>
+      </tr>
+     </tbody>
+     </table>
 </body>
 </html>
