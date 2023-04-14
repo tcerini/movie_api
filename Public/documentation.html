@@ -39,7 +39,6 @@
             <th>Business Logic</th>
             <th>URL</th>
             <th>HTTP Method</th>
-            <th>Query Parameters</th>
             <th>Request Body Data Format</th>
             <th>Response Body Data Format</th>
         </tr>
@@ -72,7 +71,7 @@
 
       <tr>
         <td>Returns data about a genre by title</td>
-        <td>/movies/genre/:genreName</td>
+        <td>/movies/genres/:genreName</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a specific genre of movie</td>
@@ -96,7 +95,7 @@
 
       <tr>
         <td>Create top movies for specific user</td>
-        <td>/users/:id/:movieTitle</td>
+        <td>/users/:id//movie/:movieTitle</td>
         <td>POST</td>
         <td>None</td>
         <td>Text response confirming movie was added correctly</tr>
@@ -104,7 +103,7 @@
       
       <tr>
         <td>Allow user to delete top movies for specific user</td>
-        <td>/users/:id/:movieTitle</td>
+        <td>/users/:id/movie/:movieTitle</td>
         <td>DELETE</td>
         <td>None</td>
         <td>Text response confirming movie was deleted correctly</td>

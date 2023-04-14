@@ -321,7 +321,7 @@ app.post('/users', (req, res) => {
 })
 
 //POST (create) user data for top movies
-app.post('/users/:id/:movieTitle', (req, res) => {
+app.post('/users/:id//movies/:movieTitle', (req, res) => {
   const { id, movieTitle } = req.params;
  
   let user = users.find( user => user.id == id );
@@ -335,7 +335,7 @@ app.post('/users/:id/:movieTitle', (req, res) => {
 })
 
 //DELETE user data for top movies
-app.delete('/users/:id/:movieTitle', (req, res) => {
+app.delete('/users/:id/movies/:movieTitle', (req, res) => {
   const { id, movieTitle } = req.params;
  
   let user = users.find( user => user.id == id );
