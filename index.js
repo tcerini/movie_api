@@ -6,8 +6,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 
-app.use(bodyParser.json());
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const Movies = Models.Movie;
+const Users = Models.User;
+mongoose.connect('mongodb://127.0.0.1:27017/moviesDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
+app.use(bodyParser.json());
 
 //morgan log writing
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
