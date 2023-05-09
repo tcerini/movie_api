@@ -108,3 +108,8 @@ Timestamp: Wed Mar 29 2023 12:13:11 GMT+0200 (Central European Summer Time)
 ::ffff:127.0.0.1 - - [09/May/2023:09:58:23 +0000] "DELETE /movies/director_description/George%20Lucas HTTP/1.1" 404 184 "-" "PostmanRuntime/7.32.2"
 ::ffff:127.0.0.1 - - [09/May/2023:09:58:43 +0000] "GET /movies/director/George%20Lucas HTTP/1.1" 404 169 "-" "PostmanRuntime/7.32.2"
 ::ffff:127.0.0.1 - - [09/May/2023:09:59:04 +0000] "GET /movies/director_description/George%20Lucas HTTP/1.1" 201 251 "-" "PostmanRuntime/7.32.2"
+::ffff:127.0.0.1 - - [09/May/2023:10:53:55 +0000] "GET /movies/There%20Will%20be%20Bloody HTTP/1.1" 404 172 "-" "PostmanRuntime/7.32.2"
+::ffff:127.0.0.1 - - [09/May/2023:10:54:08 +0000] "GET /movies/There%20Will%20Be%20Blood HTTP/1.1" 404 171 "-" "PostmanRuntime/7.32.2"
+::ffff:127.0.0.1 - - [09/May/2023:10:55:09 +0000] "GET /movies/The%20Departed HTTP/1.1" 404 160 "-" "PostmanRuntime/7.32.2"
+::ffff:127.0.0.1 - - [09/May/2023:10:57:12 +0000] "GET /movies/The%20Departed HTTP/1.1" 404 160 "-" "PostmanRuntime/7.32.2"
+::ffff:127.0.0.1 - - [09/May/2023:10:58:26 +0000] "GET /movies/The%20Departed HTTP/1.1" 201 903 "-" "PostmanRuntime/7.32.2"

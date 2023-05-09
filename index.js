@@ -118,8 +118,8 @@ app.put('/users/:Name', (req, res) => {
 		{
 			$set: {
 				Name: req.body.Name,
-				Password: req.body.Password,
 				Email: req.body.Email,
+				Password: req.body.Password,
 				Birthday: req.body.Birthday,
 			},
 		},
