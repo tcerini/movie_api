@@ -35,16 +35,6 @@ app.post('/users', (req, res) => {
 
 });
 
-//GET (read) - URL /movies/[title] to return movie data
-app.get('/movies/:title', (req, res) => {
-  const { title } = req.params;
-  const movie = topMovies.find( movie => movie.Title === title );
-  
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(400).send("This is not a Top Movie")
-  }
 
 });
 
