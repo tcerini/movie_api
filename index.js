@@ -24,12 +24,84 @@ app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
 });
 
-
-})
-
+//READ - Return ALL movies
+app.get('/movies', (req, res) => {
+	Movies.find()
+		.then((movies) => {
+			res.status(201).json(movies);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
 });
 
+// READ - Return ONE movie (all data) by 'movie title'
+app.get('/movies/title/:Title', (req, res) => {
+	Movies.findOne({ Title: req.params.Title })
+		.then((movie) => {
+			if (!movie) {
+				return res.status(404).send('Error: ' + req.params.Title + ' was not found');
+			}
+			res.status(201).json(movie);
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
+});
 
+// READ - Return ONE genre (description) by 'genre name'
+app.get('/movies/genre_description/:Genre', (req, res) => {
+	Movies.findOne({ 'Genre.Name': req.params.Genre })
+		.then((movie) => {
+			if (!movie) {
+				return res.status(404).send('Error: ' + req.params.Genre + ' was not found');
+			} else {
+				res.status(201).json(movie.Genre.Description);
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
+});
+
+//READ - Return director data (all) by 'director name'
+app.get('/movies/director_description/:Director', (req, res) => {
+	Movies.findOne({ 'Director.Name': req.params.Director })
+		.then((movie) => {
+			if (!movie) {
+				return res.status(404).send('Error: ' + req.params.Director + ' was not found');
+			} else {
+				res.status(201).json(movie.Director);
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
+});
+
+//CREATE - user (new) by all parametres
+app.post('/users', (req, res) => {
+	Users.findOne({ Name: req.body.Name })
+		.then((user) => {
+			if (user) {
+				return res.status(400).send(req.body.Name + ' already exists');
+			} else {
+				Users.create({
+					Name: req.body.Name,
+					Password: req.body.Password,
+					Email: req.body.Email,
+					Birthday: req.body.Birthday,
+				})
+					.then((user) => {
+						res.status(201).json(user);
+					})
+					.catch((error) => {
+						console.error(error);
+						res.status(500).send('Error: ' + error);
 });
 
 
