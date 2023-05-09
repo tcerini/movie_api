@@ -48,16 +48,6 @@ app.get('/movies/:title', (req, res) => {
 
 });
 
-// GET (read) - URL /movies/genre/[genre name] to return genre information
-app.get('/movies/genres/:genreName', (req, res) => {
-  const { genreName } = req.params;
-  const genre = topMovies.find( movie => movie.Genre.Name === genreName ).Genre;
-  
-  if (genre) {
-    res.status(200).json(genre);
-  } else {
-    res.status(400).send("Genre not in Top Movies")
-  }
 
 });
 
