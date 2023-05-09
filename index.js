@@ -102,22 +102,100 @@ app.post('/users', (req, res) => {
 					.catch((error) => {
 						console.error(error);
 						res.status(500).send('Error: ' + error);
+					});
+			}
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
+		});
 });
 
-
+//UPDATE (change) - users data (all) by 'name'
+app.put('/users/:Name', (req, res) => {
+	Users.findOneAndUpdate(
+		{ Name: req.params.Name },
+		{
+			$set: {
+				Name: req.body.Name,
+				Password: req.body.Password,
+				Email: req.body.Email,
+				Birthday: req.body.Birthday,
+			},
+		},
+		{ new: true }
+	)
+		.then((user) => {
+			if (!user) {
+				return res.status(404).send('Error: No user was found');
+			} else {
+				res.json(user);
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
 });
 
-// GET (read) - URL /movies/genre/[genre name] to return genre information
-app.get('/movies/directors/:directorName', (req, res) => {
-  const { directorName } = req.params;
-  const director = topMovies.find( movie => movie.Director.Name === directorName ).Director;
-  
-  if (director) {
-    res.status(200).json(director);
-  } else {
-    res.status(400).send("Director not in Top Movies")
-  }
+//UPDATE (add) - users favourite movie by 'name' (username) and 'movie ID'
+app.post('/users/:Name/movies/:MovieID', (req, res) => {
+	Users.findOneAndUpdate(
+		{ Name: req.params.Name },
+		{
+			$addToSet: { FavouriteMovies: req.params.MovieID },
+		},
+		{ new: true }
+	)
+		.then((updatedUser) => {
+			if (!updatedUser) {
+				return res.status(404).send('Error: User was not found');
+			} else {
+				res.json(updatedUser);
+			}
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
+		});
+});
 
+//UPDATE (remove) - users favourite movies by 'name' (username) and 'movie ID'
+app.delete('/users/:Name/movies/:MovieID', (req, res) => {
+	Users.findOneAndUpdate(
+		{ Name: req.params.Name },
+		{
+			$pull: { FavouriteMovies: req.params.MovieID },
+		},
+		{ new: true }
+	)
+		.then((updatedUser) => {
+			if (!updatedUser) {
+				return res.status(404).send('Error: User not found');
+			} else {
+				res.json(updatedUser);
+			}
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).send('Error: ' + error);
+		});
+});
+
+//DELETE - user (all data) by 'name'
+app.delete('/users/:Name', (req, res) => {
+	Users.findOneAndRemove({ Name: req.params.Name })
+		.then((user) => {
+			if (!user) {
+				res.status(404).send('User ' + req.params.Name + ' was not found');
+			} else {
+				res.status(200).send(req.params.Name + ' was deleted.');
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			res.status(500).send('Error: ' + err);
+		});
 });
 
 //serve documentation.html from public folder
