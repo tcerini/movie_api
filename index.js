@@ -33,66 +33,6 @@ app.post('/users', (req, res) => {
 
 })
 
-//POST (create) user data for top movies
-app.post('/users/:id//movies/:movieTitle', (req, res) => {
-  const { id, movieTitle } = req.params;
- 
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    user.favouriteMovies.push(movieTitle);
-    res.status(200).send(`${movieTitle} has been added to User ${id}'s array`)
-  } else {
-    res.status(400).send("Movie not added")
-  }
-})
-
-//DELETE user data for top movies
-app.delete('/users/:id/movies/:movieTitle', (req, res) => {
-  const { id, movieTitle } = req.params;
- 
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    user.favouriteMovies = user.favouriteMovies.filter( title => title != movieTitle)
-    res.status(200).send(`${movieTitle} has been removed from User ${id}'s array`)
-  } else {
-    res.status(400).send("Movie not deleted")
-  }
-})
-
-//DELETE user
-app.delete('/users/:id', (req, res) => {
-  const { id } = req.params;
- 
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    users = users.filter( user => user.id != id)
-    res.status(200).send(`User ${id} has been deleted`)
-  } else {
-    res.status(400).send("User not found")
-  }
-})
-
-//PUT (update) user data
-app.put('/users/:id', (req, res) => {
-  const { id } = req.params;
-  const updatedUser = req.body;
-
-  let user = users.find( user => user.id == id );
-
-  if(user) {
-    user.name = updatedUser.name;
-    res.status(200).json(user)
-  } else {
-    res.status(400).send("User ID doens't exist")
-  }
-})
-
-//GET (read) - URL /movies to return all topMpovies
-app.get('/movies', (req, res) => {
-    res.status(200).json(topMovies);
 });
 
 //GET (read) - URL /movies/[title] to return movie data
