@@ -36,60 +36,72 @@
     <table class="table">
       <thead>
         <tr>
-            <th>Business Logic</th>
-            <th>URL</th>
-            <th>HTTP Method</th>
-            <th>Request Body Data Format</th>
-            <th>Response Body Data Format</th>
+          <th>Business Logic</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request Body Data Format</th>
+          <th>Response Body Data Format</th>
         </tr>
       </thead>
 
      <tbody>   
       <tr>
-          <td>Returns a list of Top Movies</td>
-          <td>/movies</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object holding data for all Top Movies</td>
-      </tr>
-
-      <tr>
-          <td>Returns information about specific movie</td>
-          <td>/movies/:title</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object holding data about a specific movie</td>
-      </tr>
-
-      <tr>
-        <td>Returns information about a  specific director</td>
-        <td>/movies/directors/:directorName</td>
+        <td>Returns all movies</td>
+        <td>/movies</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a specific director</td>
+        <td>A JSON object holding data for all Top Movies</td>
       </tr>
 
       <tr>
-        <td>Returns data about a genre by title</td>
-        <td>/movies/genres/:genreName</td>
+        <td>Returns information about one movie by title</td>
+        <td>/movies/:title</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a specific movie</td>
+      </tr>
+
+      <tr>
+        <td>Returns a description of a genre by genre name</td>
+        <td>/movies/genre_description/:Genre</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a specific genre of movie</td>
       </tr>
 
       <tr>
-        <td>Creates user and unique ID  (requires name)</td>
+        <td>Returns the description of a director by director name</td>
+        <td>/movies/director_description/:Director</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a specific director</td>
+      </tr>
+
+      <tr>
+        <td>Creates user from name, email and password</td>
         <td>/users</td>
         <td>POST</td>
-        <td>Name: []</td>
+        <td>{
+              "Name": "[Required]",
+              "Email": "[Required]",
+              "Password": "[Required]",
+              "Birthday": "[YYYY-MM-DD, not required]"
+            }
+        </td>
         <td>JSON object with users name and unique ID</td>
       </tr>
 
       <tr>
-        <td>Update user information </td>
-        <td>/users/:id</td>
+        <td>Update user information by users name</td>
+        <td>/users/:Name</td>
         <td>PUT</td>
-        <td>Name: [updated]</td>
+        <td>{
+          "Name": "[]",
+          "Email": "[]",
+          "Password": "[]",
+          "Birthday": "[]"
+        }
+        </td>
         <td>JSON object (user) edited </td>
       </tr>
 
@@ -98,20 +110,28 @@
         <td>/users/:id//movies/:movieTitle</td>
         <td>POST</td>
         <td>None</td>
-        <td>Text response confirming movie was added correctly</tr>
-
+        <td>Text response confirming movie was added correctly</td>
+      </tr>
       
       <tr>
-        <td>Allow user to delete top movies for specific user</td>
-        <td>/users/:id/movies/:movieTitle</td>
+        <td>Add users favourite movie by user's name and movie ID</td>
+        <td>/users/:Name/movies/:MovieID</td>
+        <td>POST</td>
+        <td>None</td>
+        <td>Text response confirming movie was added correctly</td>
+      </tr>
+
+      <tr>
+        <td>Remove users favourite movie by user's name and movie ID</td>
+        <td>/users/:Name/movies/:MovieID</td>
         <td>DELETE</td>
         <td>None</td>
         <td>Text response confirming movie was deleted correctly</td>
       </tr>
 
       <tr>
-        <td>Allow user to deregister</td>
-        <td>/users/:id</td>
+        <td>Allow user to deregister by user's name</td>
+        <td>/users/:Name</td>
         <td>DELETE</td>
         <td>None</td>
         <td>Text response confirming user was deleted correctly</td>
