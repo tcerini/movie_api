@@ -37,7 +37,7 @@ app.get('/movies', (req, res) => {
 });
 
 // READ - Return ONE movie (all data) by 'movie title'
-app.get('/movies/title/:Title', (req, res) => {
+app.get('/movies/:Title', (req, res) => {
 	Movies.findOne({ Title: req.params.Title })
 		.then((movie) => {
 			if (!movie) {
@@ -52,7 +52,7 @@ app.get('/movies/title/:Title', (req, res) => {
 });
 
 // READ - Return ONE genre (description) by 'genre name'
-app.get('/movies/genre_description/:Genre', (req, res) => {
+app.get('/movies/genres/:Genre', (req, res) => {
 	Movies.findOne({ 'Genre.Name': req.params.Genre })
 		.then((movie) => {
 			if (!movie) {
@@ -68,7 +68,7 @@ app.get('/movies/genre_description/:Genre', (req, res) => {
 });
 
 //READ - Return director data (all) by 'director name'
-app.get('/movies/director_description/:Director', (req, res) => {
+app.get('/movies/directors/:Director', (req, res) => {
 	Movies.findOne({ 'Director.Name': req.params.Director })
 		.then((movie) => {
 			if (!movie) {

@@ -63,7 +63,7 @@
 
       <tr>
         <td>Returns a description of a genre by genre name</td>
-        <td>/movies/genre_description/:Genre</td>
+        <td>/movies/genres/:Genre</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a specific genre of movie</td>
@@ -71,7 +71,7 @@
 
       <tr>
         <td>Returns the description of a director by director name</td>
-        <td>/movies/director_description/:Director</td>
+        <td>/movies/directors/:Director</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a specific director</td>
@@ -105,14 +105,6 @@
         <td>JSON object (user) edited </td>
       </tr>
 
-      <tr>
-        <td>Create top movies for specific user</td>
-        <td>/users/:id//movies/:movieTitle</td>
-        <td>POST</td>
-        <td>None</td>
-        <td>Text response confirming movie was added correctly</td>
-      </tr>
-      
       <tr>
         <td>Add users favourite movie by user's name and movie ID</td>
         <td>/users/:Name/movies/:MovieID</td>
