@@ -50,7 +50,26 @@
         <td>/movies</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data for all Top Movies</td>
+        <td> Example response for all movies (only single movie displayed below):
+          {
+            "Genre": {
+                "Name":
+                "Description":
+            },
+            "Director": {
+                "Name":
+                "Bio": 
+                "Birth":
+                "Death": 
+            },
+            "Actors": [],
+            "_id":
+            "Title":
+            "Description": 
+            "ImagePath":
+            "Featured":
+          }
+        </td>
       </tr>
 
       <tr>
@@ -58,7 +77,26 @@
         <td>/movies/:title</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a specific movie</td>
+        <td> Example response:
+          {
+            "Genre": {
+                "Name":
+                "Description":
+            },
+            "Director": {
+                "Name":
+                "Bio": 
+                "Birth":
+                "Death": 
+            },
+            "Actors": [],
+            "_id":
+            "Title":
+            "Description": 
+            "ImagePath":
+            "Featured":
+          }
+        </td>
       </tr>
 
       <tr>
@@ -66,7 +104,9 @@
         <td>/movies/genres/:Genre</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a specific genre of movie</td>
+        <td> Example response:
+          "Thriller film....."
+        </td>
       </tr>
 
       <tr>
@@ -74,7 +114,14 @@
         <td>/movies/directors/:Director</td>
         <td>GET</td>
         <td>None</td>
-        <td>A JSON object holding data about a specific director</td>
+        <td>Example Response
+          {
+            "Name":
+            "Bio":
+            "Birth":
+            "Death": 
+          }
+        </td>
       </tr>
 
       <tr>
@@ -88,7 +135,17 @@
               "Birthday": "[YYYY-MM-DD, not required]"
             }
         </td>
-        <td>JSON object with users name and unique ID</td>
+        <td>Example Response:
+          {
+            "Name": "1",
+            "Email": "1",
+            "Password": "1",
+            "Birthday": "1990-01-01T00:00:00.000Z",
+            "FavouriteMovies": [],
+            "_id": "645a2a87429c3c56c2f4b957",
+            "__v": 0
+          }
+        </td>
       </tr>
 
       <tr>
@@ -100,9 +157,19 @@
           "Email": "[]",
           "Password": "[]",
           "Birthday": "[]"
-        }
+          }
         </td>
-        <td>JSON object (user) edited </td>
+        <td>Example Response:
+          {
+            "Name": "1",
+            "Email": "1",
+            "Password": "1",
+            "Birthday": "2000-01-01T00:00:00.000Z",
+            "FavouriteMovies": [],
+            "_id": "645a2a87429c3c56c2f4b957",
+            "__v": 0
+          }
+        </td>
       </tr>
 
       <tr>
@@ -110,7 +177,17 @@
         <td>/users/:Name/movies/:MovieID</td>
         <td>POST</td>
         <td>None</td>
-        <td>Text response confirming movie was added correctly</td>
+        <td>Example Response:
+          {
+            "Name": "1",
+            "Email": "1",
+            "Password": "1",
+            "Birthday": "2000-01-01T00:00:00.000Z",
+            "FavouriteMovies": [6446667b95fc2319a1416447],
+            "_id": "645a2a87429c3c56c2f4b957",
+            "__v": 0
+          }
+        </td>
       </tr>
 
       <tr>
@@ -118,7 +195,17 @@
         <td>/users/:Name/movies/:MovieID</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>Text response confirming movie was deleted correctly</td>
+        <td>Example Response:
+          {
+            "Name": "1",
+            "Email": "1",
+            "Password": "1",
+            "Birthday": "2000-01-01T00:00:00.000Z",
+            "FavouriteMovies": [],
+            "_id": "645a2a87429c3c56c2f4b957",
+            "__v": 0
+          }
+        </td>
       </tr>
 
       <tr>
@@ -126,7 +213,7 @@
         <td>/users/:Name</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>Text response confirming user was deleted correctly</td>
+        <td>[User's name] was deleted.</td>
       </tr>
      </tbody>
      </table>
