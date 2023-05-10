@@ -125,11 +125,11 @@
       </tr>
 
       <tr>
-        <td>Creates user from name, email and password</td>
+        <td>Creates user from Username, email and password</td>
         <td>/users</td>
         <td>POST</td>
         <td>{
-              "Name": "[Required]",
+              "Username": "[Required]",
               "Email": "[Required]",
               "Password": "[Required]",
               "Birthday": "[YYYY-MM-DD, not required]"
@@ -137,7 +137,7 @@
         </td>
         <td>Example Response:
           {
-            "Name": "1",
+            "Username": "1",
             "Email": "1",
             "Password": "1",
             "Birthday": "1990-01-01T00:00:00.000Z",
@@ -149,11 +149,11 @@
       </tr>
 
       <tr>
-        <td>Update user information by users name</td>
-        <td>/users/:Name</td>
+        <td>Update user information by users Username</td>
+        <td>/users/:Username</td>
         <td>PUT</td>
         <td>{
-          "Name": "[]",
+          "Username": "[]",
           "Email": "[]",
           "Password": "[]",
           "Birthday": "[]"
@@ -161,7 +161,7 @@
         </td>
         <td>Example Response:
           {
-            "Name": "1",
+            "Username": "1",
             "Email": "1",
             "Password": "1",
             "Birthday": "2000-01-01T00:00:00.000Z",
@@ -173,13 +173,13 @@
       </tr>
 
       <tr>
-        <td>Add users favourite movie by user's name and movie ID</td>
-        <td>/users/:Name/movies/:MovieID</td>
+        <td>Add users favourite movie by user's Username and movie ID</td>
+        <td>/users/:Username/movies/:MovieID</td>
         <td>POST</td>
         <td>None</td>
         <td>Example Response:
           {
-            "Name": "1",
+            "Username": "1",
             "Email": "1",
             "Password": "1",
             "Birthday": "2000-01-01T00:00:00.000Z",
@@ -191,13 +191,13 @@
       </tr>
 
       <tr>
-        <td>Remove users favourite movie by user's name and movie ID</td>
-        <td>/users/:Name/movies/:MovieID</td>
+        <td>Remove users favourite movie by user's Username and movie ID</td>
+        <td>/users/:Username/movies/:MovieID</td>
         <td>DELETE</td>
         <td>None</td>
         <td>Example Response:
           {
-            "Name": "1",
+            "Username": "1",
             "Email": "1",
             "Password": "1",
             "Birthday": "2000-01-01T00:00:00.000Z",
@@ -209,11 +209,11 @@
       </tr>
 
       <tr>
-        <td>Allow user to deregister by user's name</td>
-        <td>/users/:Name</td>
+        <td>Allow user to deregister by user's Username</td>
+        <td>/users/:Username</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>[User's name] was deleted.</td>
+        <td>[User's Username] was deleted.</td>
       </tr>
      </tbody>
      </table>
