@@ -13,6 +13,12 @@ const Users = Models.User;
 mongoose.connect('mongodb://127.0.0.1:27017/moviesDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+let auth = require('./auth')(app);
+
+const passport = require('passport');
+require('./passport');
 
 //morgan log writing
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
@@ -25,7 +31,7 @@ app.get("/", (req, res) => {
 });
 
 //READ - Return ALL movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Movies.find()
 		.then((movies) => {
 			res.status(201).json(movies);
@@ -85,13 +91,13 @@ app.get('/movies/directors/:Director', (req, res) => {
 
 //CREATE - user (new) by all parametres
 app.post('/users', (req, res) => {
-	Users.findOne({ Name: req.body.Name })
+	Users.findOne({ Username: req.body.Username })
 		.then((user) => {
 			if (user) {
-				return res.status(400).send(req.body.Name + ' already exists');
+				return res.status(400).send(req.body.Username + ' already exists');
 			} else {
 				Users.create({
-					Name: req.body.Name,
+					Username: req.body.Username,
 					Password: req.body.Password,
 					Email: req.body.Email,
 					Birthday: req.body.Birthday,
@@ -112,7 +118,7 @@ app.post('/users', (req, res) => {
 });
 
 //UPDATE (change) - users data (all) by 'name'
-app.put('/users/:Name', (req, res) => {
+app.put('/users/:Username', (req, res) => {
 	Users.findOneAndUpdate(
 		{ Name: req.params.Name },
 		{
@@ -139,9 +145,9 @@ app.put('/users/:Name', (req, res) => {
 });
 
 //UPDATE (add) - users favourite movie by 'name' (username) and 'movie ID'
-app.post('/users/:Name/movies/:MovieID', (req, res) => {
+app.post('/users/:Username/movies/:MovieID', (req, res) => {
 	Users.findOneAndUpdate(
-		{ Name: req.params.Name },
+		{ Username: req.params.Username },
 		{
 			$addToSet: { FavouriteMovies: req.params.MovieID },
 		},
@@ -161,9 +167,9 @@ app.post('/users/:Name/movies/:MovieID', (req, res) => {
 });
 
 //UPDATE (remove) - users favourite movies by 'name' (username) and 'movie ID'
-app.delete('/users/:Name/movies/:MovieID', (req, res) => {
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
 	Users.findOneAndUpdate(
-		{ Name: req.params.Name },
+		{ Username: req.params.Username },
 		{
 			$pull: { FavouriteMovies: req.params.MovieID },
 		},
@@ -183,13 +189,13 @@ app.delete('/users/:Name/movies/:MovieID', (req, res) => {
 });
 
 //DELETE - user (all data) by 'name'
-app.delete('/users/:Name', (req, res) => {
-	Users.findOneAndRemove({ Name: req.params.Name })
+app.delete('/users/:Username', (req, res) => {
+	Users.findOneAndRemove({ Username: req.params.Username })
 		.then((user) => {
 			if (!user) {
-				res.status(404).send('User ' + req.params.Name + ' was not found');
+				res.status(404).send('User ' + req.params.Username + ' was not found');
 			} else {
-				res.status(200).send(req.params.Name + ' was deleted.');
+				res.status(200).send(req.params.Username + ' was deleted.');
 			}
 		})
 		.catch((err) => {
