@@ -41,6 +41,7 @@
           <th>HTTP Method</th>
           <th>Request Body Data Format</th>
           <th>Response Body Data Format</th>
+          <th>Authentication Requirements</th>
         </tr>
       </thead>
 
@@ -70,6 +71,7 @@
             "Featured":
           }
         </td>
+        <td>Bearer Token (JWT)</td>
       </tr>
 
       <tr>
@@ -97,6 +99,7 @@
             "Featured":
           }
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -107,6 +110,7 @@
         <td> Example response:
           "Thriller film....."
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -122,6 +126,7 @@
             "Death": 
           }
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -146,6 +151,7 @@
             "__v": 0
           }
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -170,6 +176,7 @@
             "__v": 0
           }
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -206,6 +213,7 @@
             "__v": 0
           }
         </td>
+        <td>None</td>
       </tr>
 
       <tr>
@@ -214,7 +222,30 @@
         <td>DELETE</td>
         <td>None</td>
         <td>[User's Username] was deleted.</td>
+        <td>None</td>
       </tr>
+
+      <tr>
+        <td>Allow users to login - access authentication required endpoints</td>
+        <td>/login</td>
+        <td>POST</td>
+        <td>Parameters: Username & Password</td>
+        <td>{
+          "user": {
+              "_id": 
+              "Username": 
+              "Email": 
+              "Password": 
+              "Birthday": 
+              "FavouriteMovies": 
+              "__v": 0
+              },
+          "token": [NEW JWT]
+            }
+        </td>
+        <td>None</td>
+      </tr>
+
      </tbody>
      </table>
 </body>
