@@ -120,10 +120,10 @@ app.post('/users', (req, res) => {
 //UPDATE (change) - users data (all) by 'name'
 app.put('/users/:Username', (req, res) => {
 	Users.findOneAndUpdate(
-		{ Name: req.params.Name },
+		{ Username: req.params.Username },
 		{
 			$set: {
-				Name: req.body.Name,
+				Username: req.body.Username,
 				Email: req.body.Email,
 				Password: req.body.Password,
 				Birthday: req.body.Birthday,
