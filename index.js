@@ -5,6 +5,7 @@ const fs = require('fs');
 const app = express();
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
+const { check, validationResult } = require('express-validator');
 
 const mongoose = require('mongoose');
 const Models = require('./models.js');
@@ -17,8 +18,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let auth = require('./auth')(app);
 
+//Passport Middleware (after AUTH)
 const passport = require('passport');
 require('./passport');
+
+//CORS Middleware (after ./auth) allowed origins)
+const cors = require('cors');
+let allowedOrigins = ['http://localhost:8080'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 //morgan log writing
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
