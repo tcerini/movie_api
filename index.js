@@ -60,7 +60,7 @@ app.get('/movies', (req, res) => {
 });
 
 // READ - Return ONE movie (all data) by 'movie title'
-app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies/:Title', (req, res) => {
 	Movies.findOne({ Title: req.params.Title })
 		.then((movie) => {
 			if (!movie) {
