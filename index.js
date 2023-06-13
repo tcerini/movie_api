@@ -24,7 +24,7 @@ require('./passport');
 
 //CORS Middleware (after ./auth) allowed origins)
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/' ];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 });
 
 //READ - Return ALL movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Movies.find()
 		.then((movies) => {
 			res.status(201).json(movies);
@@ -60,7 +60,7 @@ app.get('/movies', (req, res) => {
 });
 
 // READ - Return ONE movie (all data) by 'movie title'
-app.get('/movies/:Title', (req, res) => {
+app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Movies.findOne({ Title: req.params.Title })
 		.then((movie) => {
 			if (!movie) {
@@ -75,7 +75,7 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 // READ - Return ONE genre (description) by 'genre name'
-app.get('/movies/genres/:Genre', (req, res) => {
+app.get('/movies/genres/:Genre', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Movies.findOne({ 'Genre.Name': req.params.Genre })
 		.then((movie) => {
 			if (!movie) {
@@ -107,7 +107,7 @@ app.get('/movies/directors/:Director', passport.authenticate('jwt', { session: f
 });
 
 //CREATE - user (new) by all parametres
-app.post('/users', 
+app.post('/users', passport.authenticate('jwt', { session: false }),
 	//validation logic
 	[
 		check('Username', 'Username is required').isLength({min: 5}),
