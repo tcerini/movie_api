@@ -107,7 +107,7 @@ app.get('/movies/directors/:Director', passport.authenticate('jwt', { session: f
 });
 
 //CREATE - user (new) by all parametres
-app.post('/users', passport.authenticate('jwt', { session: false }),
+app.post('/users',
 	//validation logic
 	[
 		check('Username', 'Username is required').isLength({min: 5}),
