@@ -24,7 +24,7 @@ require('./passport');
 
 //CORS Middleware (after ./auth) allowed origins)
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/' ];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/', 'https://tc-movie-api.herokuapp.com/login' ];
 
 app.use(cors({
   origin: (origin, callback) => {
