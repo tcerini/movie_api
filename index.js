@@ -13,6 +13,9 @@ const Movies = Models.Movie;
 const Users = Models.User;
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+
+let auth = require('./auth')(app);
+
 //CORS Middleware (after ./auth) allowed origins)
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/', 'https://tc-movie-api.herokuapp.com/login' ];
@@ -30,8 +33,6 @@ app.use(cors({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-let auth = require('./auth')(app);
 
 //Passport Middleware (after AUTH)
 const passport = require('passport');
