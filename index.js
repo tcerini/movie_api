@@ -15,7 +15,7 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 //CORS Middleware (after ./auth) allowed origins)
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/', 'https://tc-movie-api.herokuapp.com/login' ];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://tc-movie-api.herokuapp.com/', 'https://tc-movie-api.herokuapp.com/login', 'https://tc-movie-api.herokuapp.com/users', 'https://tc-movie-api.herokuapp.com/movies' ];
 
 app.use(cors({
   origin: (origin, callback) => {
